@@ -1,0 +1,37 @@
+{% extends "webpage/navbar.html" %}
+{% load static %}
+
+{% block title %}
+    TicketTaka - Home
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/admin_concert_edit.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+{% block main_admin %}
+    <div class="container">
+        <h2>Edit {{iticket.seat}}</h2>
+        <form method="post">
+            {%csrf_token%}
+            <label for="seat">Seat:</label>
+            <input type="text" name="seat" value="{{iticket.seat}}">
+
+            <label for="price">Price:</label>
+            <input type="text" name="price" value="{{iticket.price}}">
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block main_notlogin %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="{% static 'myapp/css/navbarbase.css' %}">
+</head>
+<body>
+    <!-- <nav class="navbar">
+        <div class="navbar-left">
+            <span class="logo">TicketTaka</span>
+            <a href="/">Home</a>
+            <a href="concert">Concerts</a>
+        </div>
+        {% if users.is_authenticated %}
+            <span>{{ user.username }}</span>
+        {% else %}
+            <a href="{% url 'login' %}" >Iog In</a>
+        {% endif %}
+        <script src="{% static 'js/profile_account.js' %}"></script>
+    </nav> -->
+    
+    <!-- Login Container -->
+    <div class="login-container">
+        <!-- Login Form -->
+        <form style="display: flex; flex-direction: column; gap: 15px;" action="{% url 'login' %}" method="POST" >
+            {% csrf_token %}
+
+                {{ form.as_p}}
+
+            <a>
+                <button type="submit" class="login-btn">Login</button>
+            </a>
+        </form>
+
+        <!-- Register Section -->
+        <div class="register-section">
+            <p>Don't have an account? <a href="/user/register" >Register here</a></p>
+        </div>
+    </div>
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const userEmail = localStorage.getItem('userEmail');
+            const signInLink = document.getElementById('sign-in-link');
+    
+            if (isLoggedIn === 'true' && userEmail) {
+                // Change "Sign In" to "Profile"
+                signInLink.textContent = 'Profile';
+                signInLink.href = 'profile_account'; // Redirect to the profile page
+            }
+        });
+    </script>
+    <script>
+        document.querySelector('.login-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+    
+            // Simulate login and save to localStorage
+            const userName = document.getElementById('Email').value.split('@')[0]; // Extract username
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userName', userName);
+    
+            // Redirect to home page
+            window.location.href = 'home';
+        });
+    </script> -->
+</body>
+</html>

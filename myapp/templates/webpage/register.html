@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}"> <!-- Link to shared CSS file -->
+    <link rel="stylesheet" href="{% static 'myapp/css/navbarbase.css' %}">
+</head>
+<body>
+
+    <!-- Registration Container -->
+    <div class="login-container">
+        <h1 class="register-title">Create an Account</h1>
+
+        <!-- Registration Form -->
+        <form class="login-form" method="post">
+
+            {% csrf_token %}
+
+            <div class="input-group">
+                <a>Fullname: </a>
+                {{ form.username }}
+                {{ form.username.error }}
+            </div>
+            <div class="input-group">
+                <a>Email: </a>
+                {{ form.email }}
+                {{ form.email.error }}
+            </div>
+            <div class="input-group">
+                <a>Password: </a>
+                {{ form.password1 }}
+                {{ form.password1.error }}
+            </div>
+            <div class="input-group">
+                <a>Confirm Password: </a>
+                {{ form.password2 }}
+                {{ form.password2.error }}
+            </div>
+
+            <button type="submit" class="">Register</button>
+        </form>
+
+        <!-- Back to Login -->
+        <div class="register-section">
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>

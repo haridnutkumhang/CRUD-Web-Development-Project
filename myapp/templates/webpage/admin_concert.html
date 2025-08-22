@@ -1,0 +1,64 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Home
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/admin_feedback.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+{% block main_admin %}
+    <div class="container">
+        <h2>Concerts Management</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Age Restriction</th>
+                    <th>Organizer</th>
+                    <th>Artists</th>
+                    <th>image</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Tickets</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in all_concerts %}
+                    <tr>
+                        <td>{{x.name}}</td>
+                        <td>{{x.datetime}}</td>
+                        <td>{{x.description}}</td>
+                        <td>{{x.location}}</td>
+                        <td>{{x.agerestriction}}</td>
+                        <td>{{x.organizer}}</td>
+                        <td>{{x.artists}}</td>
+                        <td>{{x.image}}</td>
+                        <td><button class="edit-button" onclick="window.location.href='admin_concert_edit/{{x.name}}';">Edit</button></td>
+                        <td><button class="delete-button" onclick="window.location.href='admin_concert_delete/{{x.name}}';">Delete</button></td>
+                        <td><button class="edit2-button" onclick="window.location.href='admin_concert_ticket/{{x.name}}';">Views</button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button type="create-button" onclick="window.location.href='admin_concert_add';">Add New Concert</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main_notlogin %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

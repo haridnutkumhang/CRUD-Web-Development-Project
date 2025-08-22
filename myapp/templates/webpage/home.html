@@ -1,0 +1,122 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Home
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+    <section class="recommendations">
+        <h2>Recommend for You</h2>
+        <div class="slider">
+            <button class="prev-btn">&lt;</button>
+            <div class="slider-container">
+
+                {% for i in all_concerts%}
+                    <div class="slide">
+                        <img src="{{i.image.url}}"" alt="{{i.name}}">
+                        <h3>{{i.name}}</h3>
+                        <p>{{i.datetime}}</p>
+                    </div>
+                {% endfor %}
+
+                <!-- {% for i in concerts %}
+                    {{i.name}}
+                {% endfor %} -->
+            
+            </div>
+            <button class="next-btn">&gt;</button>
+        </div>
+        <a href="concert" class="buy-btn">See All Concerts</a>
+    </section>
+{% endblock %}
+
+{% block main_admin %}
+    <div class="container">
+        <h2>User Information Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in all_customers %}
+                <tr>
+                    <td>{{x.id}}</td>
+                    <td>{{x.username}}</td>
+                    <td>{{x.email}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block main_dev %}
+    <div class="container">
+        <h2>Admin Information Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in all_admins %}
+                <tr>
+                    <td>{{x.id}}</td>
+                    <td>{{x.username}}</td>
+                    <td>{{x.email}}</td>
+                    <td><button class="edit-button" onclick="window.location.href='dev_admin_edit/{{user.id}}/{{x.id}}';">Edit</button></td>
+                    <td><button class="delete-button" onclick="window.location.href='dev_admin_delete/{{x.id}}';">Delete</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button class="create-button" onclick="window.location.href='dev_add_admin';">Add New Admin</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main_notlogin %}
+    <section class="recommendations">
+        <h2>Recommend for You</h2>
+        <div class="slider">
+            <button class="prev-btn">&lt;</button>
+            <div class="slider-container">
+
+                {% for i in all_concerts%}
+                    <div class="slide">
+                        <img src="{{i.image.url}}"" alt="{{i.name}}">
+                        <h3>{{i.name}}</h3>
+                        <p>{{i.datetime}}</p>
+                    </div>
+                {% endfor %}
+
+                <!-- {% for i in concerts %}
+                    {{i.name}}
+                {% endfor %} -->
+            
+            </div>
+            <button class="next-btn">&gt;</button>
+        </div>
+        <a href="concert">See All Concert</a>
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

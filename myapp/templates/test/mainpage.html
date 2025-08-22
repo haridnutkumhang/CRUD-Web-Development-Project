@@ -1,0 +1,17 @@
+{% extends "test/base.html" %}
+
+{% block title %}
+    <title>Ticket Take mainpage</title>
+{% endblock %}
+
+{% block content %}
+    <h1 style="color: blue;">mainpage testing</h1>
+    <h2>Hi, {{keyname | upper}}!</h2>   
+    <h2>Your age is {{keyage}}</h2>
+
+    {% if keyage >= 20 %}
+        <h2>You are allow to consume alcohol!</h2>
+    {% else %}
+        <h2>You aren't allow to consume alcohol!</h2>
+    {% endif %}
+{% endblock %}

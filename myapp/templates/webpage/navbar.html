@@ -1,0 +1,107 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+        {% block stylesheet %}
+        {% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-left">
+                {% if user.is_authenticated %}
+                    {% if user.role == 'CUSTOMER' %}
+                        <span class="logo">TicketTaka</span>
+                        <a href="/">Home</a>
+                        <a href="/concert">Concerts</a>
+                    {% elif user.role == 'ADMIN' %}
+                        <span class="logo">TicketTaka Administrator</span>
+                        <a href="/">Users Management</a>
+                        <a href="/admin_feedback">Users Feedback</a>
+                        <a href="/admin_concert">Concerts Management</a>
+                    {% elif user.role == 'DEV' %}
+                        <span class="logo">TicketTaka Developer</span>
+                        <a href="/">Admins Management</a>
+                        <a href="/dev_feedback">Admins Feedback</a>
+                    {% else %}
+                        <span class="logo">TicketTaka SuperUser</span>
+                    {% endif %}
+                {% else %}
+                    <span class="logo">TicketTaka</span>
+                    <a href="/">Home</a>
+                    <a href="/concert">Concerts</a>
+                {% endif %}
+            </div> 
+            <div class="navbar-right">
+                <!-- <a href="#" class="feedback-link" onclick="toggleFeedbackPanel()">&#128393; Feedback</a>
+                <a href="#" class="cart-icon" onclick="toggleCartPanel()">🛒</a> -->
+                {% if user.is_authenticated %}
+                    {% if user.role == 'CUSTOMER' %}
+                        <a href="/user/feedback/{{user.id}}" class="button">feedback</a>
+                        <a href="/user/profile_account">&#128540; {{ user.username }}</a>
+                    {% elif user.role == 'ADMIN' %}
+                        <a href="/admin_receive_message">Dev's messages</a>
+                        <a href="/admin_message/{{user.id}}">Send a message to devs</a>
+                        <a>Admin - {{ user.username }}</a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button class="buy-btn" type="submit">logout</button>
+                        </form>
+                    {% elif user.role == 'DEV' %}
+                        <a href="/dev_message/{{user.id}}">Send a message to Admins</a>
+                        <a>&#128540; {{ user.username }}</a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button class="buy-btn" type="submit">logout</button>
+                        </form>
+                    {% else %}
+                        <a>&#128540; {{ user.username }}</a>
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button class="buy-btn" type="submit">logout</button>
+                        </form>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'login' %}" >Iog In</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    <main>
+        {% if user.is_authenticated %}
+            {% if user.role == 'CUSTOMER' %}
+                {% block main %} 
+            
+                {% endblock %}
+            {% elif user.role == 'ADMIN' %}
+
+                {% block main_admin %}
+
+                {% endblock %}
+
+            {% elif user.role == 'DEV' %}
+
+                {% block main_dev %}
+                    
+                {% endblock %}
+
+            {% endif %}
+        {% else %}
+            {% block main_notlogin %}
+                
+            {% endblock %}
+        {% endif %}
+    </main>
+        {% block script %}
+
+        {% endblock %}
+</body>
+</html>

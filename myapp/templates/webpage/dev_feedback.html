@@ -1,0 +1,48 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Home
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/admin_feedback.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+{% block main_admin %}
+{% endblock %}
+
+{% block main_dev %}
+<div class="container">
+    <h2>Admins' Messages</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Username</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in all_feedbacks %}
+            <tr>
+                <td>{{x.date}}</td>
+                <td>{{x.user}}</td>
+                <td>{{x.content}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block main_notlogin %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

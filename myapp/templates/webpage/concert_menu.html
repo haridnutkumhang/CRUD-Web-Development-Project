@@ -1,0 +1,65 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Concerts
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/concert_menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+    <section class="all-concerts">
+        <h1>All Concerts</h1>
+        <div class="concert-list">
+
+            {% for i in all_concerts %}
+                <div class="concert-item">
+                    <img src="{{i.image.url}}" alt="{{i.name}}">
+                    <h2>{{i.name}}</h2>
+                    <p>{{i.datetime}}</p>
+                    <p>Description: {{i.description}}</p>
+                    <p>Locatiion: {{i.location}}</p>
+                    <p>Organizer: {{i.organizer}}</p>
+                    <p>Artists: {{i.artists}}</p>
+                    <a href = 'concert/{{i.name}}/{{user.id}}' class="buy-btn">Buy Ticket</a>
+                </div>
+            {% endfor %}
+
+        </div>
+    </section>
+{% endblock %}
+
+{% block main_notlogin %}
+<section class="all-concerts">
+    <h1>All Concerts</h1>
+    <div class="concert-list">
+
+        {% for i in all_concerts %}
+            <div class="concert-item">
+                <img src="{{i.image.url}}" alt="{{i.name}}">
+                <h2>{{i.name}}</h2>
+                <p>{{i.datetime}}</p>
+                <a href = 'concert/{{i.name}}'>Buy Ticket</a>
+            </div>
+        {% endfor %}
+
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function redirectToChooseSeat(eventName, eventDate, eventTime) {
+            // Save event details to localStorage
+            localStorage.setItem('eventName', eventName);
+            localStorage.setItem('eventDate', eventDate);
+            localStorage.setItem('eventTime', eventTime);
+
+            // Redirect to the Choose Seat page
+            window.location.href = 'choose_seat';
+        }
+    </script>
+{% endblock %}

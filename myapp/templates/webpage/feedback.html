@@ -1,0 +1,36 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Home
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+    <!-- <form method = 'post'>
+        {%csrf_token%}
+        <div class="input-group">
+            <label for="feedback">feedback</label>
+            <input type="text" name="feedback">
+        </div>
+        <button type="submit" class="login-btn" >Save Changes</button>
+    </form> -->
+    <form class="feedback-form" method="post">
+        {% csrf_token %}
+        <label for="feedback">Your Feedback:</label>
+        <textarea id="feedback" name="feedback" placeholder="Write your feedback here..." required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock %}
+
+{% block main_notlogin %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

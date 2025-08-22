@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Admin Login</h1>
+        <form id="admin-login-form">
+            <div class="form-group">
+                <label for="admin-username">Username:</label>
+                <input type="text" id="admin-username" required>
+            </div>
+            <div class="form-group">
+                <label for="admin-password">Password:</label>
+                <input type="password" id="admin-password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p id="login-error" style="color: red; display: none;">Invalid credentials!</p>
+    </div>
+
+    <script>
+        const adminCredentials = {
+            username: "admin",
+            password: "password123"
+        };
+
+        document.getElementById("admin-login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("admin-username").value;
+            const password = document.getElementById("admin-password").value;
+
+            if (username === adminCredentials.username && password === adminCredentials.password) {
+                window.location.href = "admin-dashboard.html";
+            } else {
+                document.getElementById("login-error").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

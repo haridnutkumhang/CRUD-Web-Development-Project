@@ -1,0 +1,54 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Home
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/admin_feedback.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+{% block main_admin %}
+    <div class="container">
+        <h2>Tickets Management</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Seat</th>
+                    <th>Price</th>
+                    <th>BookingID</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in all_tickets %}
+                    <tr>
+                        <td>{{x.seat}}</td>
+                        <td>{{x.price}}</td>
+                        <td>{{x.booking}}</td>
+                        <td>{{x.status}}</td>
+                        <td><button class="edit-button" onclick="window.location.href='/admin_concert_ticket_edit/{{x.seat}}';">Edit</button></td>
+                        <td><button class="delete-button" onclick="window.location.href='/admin_concert_ticket_delete/{{x.seat}}';">Delete</button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="button-container">
+            <button type="create-button" onclick="window.location.href='/admin_concert_ticket_add/{{iconcert.name}}';">Add New Tickets</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main_notlogin %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Payment
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/payment.css' %}"> <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="payment-container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <a href="concert" style="text-decoration: none; color: #fff;">&larr; Back</a>
+            <!-- Personal Details -->
+            <div class="personal-details">
+                <h3>Personal Details</h3>
+                <div class="details">
+                    <div>
+                        <label for="first-name">Username: {{customer.username}}</label>
+                        <span id="first-name"></span>
+                    </div>
+                    <div>
+                        <label for="email">Email: {{customer.email}}</label>
+                        <span id="email"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="payment-method">
+                <h3>Card Information</h3>
+                <!-- <div class="radio-container">
+                    <input type="radio" id="credit-card" name="payment-method" value="credit-card" checked>
+                    <label for="credit-card">Credit Card</label>
+                </div> -->
+                <div class="method">
+                    <div>
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="Enter card number" maxlength="16" pattern="\d{16}" required>
+                    </div>
+                    <div>
+                        <label for="card-name">Cardholder Name</label>
+                        <input type="text" id="card-name" name="card-name" placeholder="Enter cardholder name" required>
+                    </div>
+                    <div>
+                        <label for="expiry-month">Expiry Month</label>
+                        <select id="expiry-month" name="expiry-month">
+                            {% for month in months %}
+                                <option>{{month}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <label for="expiry-year">Expiry Year</label>
+                        <select id="expiry-year" name="expiry-year">
+                            {% for year in years %}
+                                <option>{{year}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <label for="cvv">CVV</label>
+                        <input type="password" id="cvv" name="cvv" placeholder="Enter CVV" maxlength="3" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="summary-section">
+            <h3>Order Summary</h3>
+            <div class="order-details">
+                <p>Total Price: <span>{{total_price}}</span></p>
+                <p>Your Order:</p>
+                {% for x in tickets %}
+                    <p>{{x.seat}}</p>
+                {% endfor %}
+            </div>
+            <button class="pay-btn" onclick="window.location.href='/payment_confirm/{{booking.id}}/{{total_price}}'">Confirm Payment</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

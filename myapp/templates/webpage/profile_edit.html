@@ -1,0 +1,47 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Profile Edit
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/profile_edit.css' %}"> <!-- Reuse CSS file -->
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="profile-container">
+        <h1 class="profile-title">Edit Profile</h1>
+        <form class="profile-form" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="username">Full Name:</label>
+                <input type="text" name="username" value = "{{user.username}}">
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" name = "email" value = "{{user.email}}">
+            </div>
+            <button type="submit" class="login-btn" >Save Changes</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <!-- <script>
+        function saveProfile() {
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            // Store updated values in localStorage
+            localStorage.setItem('fullName', fullName);
+            localStorage.setItem('email', email);
+            localStorage.setItem('phone', phone);
+
+            // Redirect to profile page
+            window.location.href = 'profile_account';
+        }
+    </script> -->
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Seat
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/choose_seat.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+    {% for i in iconcert %}
+        <div class="container">
+            <!-- Left Section: Event Details -->
+            <div class="event-details">
+                <a href="/concert" style="text-decoration: none; color: #fff;">&larr; Back</a>
+            <h1 id="event-name">{{i.name}}</h1>
+                <div class="info">
+                    <p><span id="event-date">{{i.datetime}}</span></p>
+                </div>
+                <div class="seat">
+                    <strong>Selected Seats:</strong>
+                    <span id="ticket-count">{{count}}</span> ticket(s)
+                </div>
+                <!-- Buy Tickets Button -->
+            <div class="footer">
+                <div class="price">Total Price: <span id="total-price">{{total_price}} Baht</span></div>
+                </div>
+                <a>Choosed Tickets:</a>
+                {% for y in customer_tickets %}
+                    <a>{{y.seat}}</a>
+                {% endfor %}
+                <button class="buy-btn" onclick="window.location.href='/payment/{{i.name}}/{{user.id}}/{{ibooking.id}}';">Continue to Payment</button>
+            </div>
+            <div>
+
+                <div class="seat-map">
+                    <div class="header">
+                        <div class="legend">
+                            <span><div class="box available"></div>Available</span>
+                            <span><div class="box selected"></div>Selected</span>
+                            <span><div class="box unavailable"></div>Unavailable</span>
+                        </div>
+                    </div>
+                    <div class="stage">
+                        STAGE
+                    </div>
+                    <div class="grid">
+                        {% for x in all_tickets %}
+                            {% if x.status == 'Available' %}
+                                <button class="seat" onclick="window.location.href='/booking_add_ticket/{{i.name}}/{{x.seat}}/{{user.id}}';">{{x.seat}}</button>
+                                <a>Price: {{x.price}}</a>
+                            {% elif x.status == 'Selected' %}
+                                <button class="seat" onclick="window.location.href='/booking_delete_ticket/{{i.name}}/{{x.seat}}/{{user.id}}';">{{x.seat}}</button>
+                                <a>{{x.seat}} is selected!</a>
+                            {% else %}
+                                <button class="seat">{{x.seat}}</button>
+                                <a>{{x.seat}} is not available</a>
+                            {% endif %}
+                        {% endfor %}
+                        <!-- <div class="seat unavailable">A1</div>
+                        <div class="seat unavailable">A2</div>
+                        <div class="seat available">A3</div>
+                        <div class="seat available">A4</div>
+                        <div class="seat unavailable">A5</div>
+                        <div class="seat unavailable">A6</div>
+                        <div class="seat unavailable">A7</div>
+                        <div class="seat available">A8</div>
+                        <div class="seat unavailable">A9</div>
+                        <div class="seat available">A10</div>
+                        <div class="seat available">A11</div>
+                        <div class="seat unavailable">A12</div>
+                        <div class="seat unavailable">A13</div>
+                        <div class="seat unavailable">A14</div>
+                        <div class="seat available">A15</div>
+                        <div class="seat available">A16</div>
+                        <div class="seat available">A17</div> -->
+                    </div>
+                </div>
+            </div>
+        </div> 
+    {% endfor %}
+{% endblock %}
+
+{% block main_notlogin %}
+    {% for i in iconcert %}
+        <div class="container">
+            <!-- Left Section: Event Details -->
+            <div class="event-details">
+                <a href="concert" style="text-decoration: none; color: #fff;">&larr; Back</a>
+            <h1 id="event-name">{{i.name}}</h1>
+                <div class="info">
+                    <p><span id="event-date">{{i.datetime}}</span></p>
+                    <p>Price per Ticket: ฿560</p>
+                </div>
+                <div class="seat">
+                    <strong>Selected Seats:</strong>
+                    <span id="ticket-count">0</span> ticket(s)
+                </div>
+                <!-- Buy Tickets Button -->
+            <div class="footer">
+                <div class="price">Total Price: <span id="total-price">฿0</span></div>
+                    <button class="buy-btn" onclick="proceedToPayment()">Buy tickets</button>
+                </div>
+            </div>
+            <div>
+                <!-- Right Section: Seat Map -->
+                <div class="seat-map">
+                    <div class="header">
+                        <div class="legend">
+                            <span><div class="box available"></div>Available</span>
+                            <span><div class="box selected"></div>Selected</span>
+                            <span><div class="box unavailable"></div>Unavailable</span>
+                        </div>
+                    </div>
+                    <div class="stage">
+                        STAGE
+                    </div>
+                    <div class="grid">
+                        {% for x in all_tickets %}
+                            <form method="post">
+                                <div class="seat unavailable">{{x.seat}}</div>
+                            </form>
+                        {% endfor %}
+                        <!-- <div class="seat unavailable">A1</div>
+                        <div class="seat unavailable">A2</div>
+                        <div class="seat available">A3</div>
+                        <div class="seat available">A4</div>
+                        <div class="seat unavailable">A5</div>
+                        <div class="seat unavailable">A6</div>
+                        <div class="seat unavailable">A7</div>
+                        <div class="seat available">A8</div>
+                        <div class="seat unavailable">A9</div>
+                        <div class="seat available">A10</div>
+                        <div class="seat available">A11</div>
+                        <div class="seat unavailable">A12</div>
+                        <div class="seat unavailable">A13</div>
+                        <div class="seat unavailable">A14</div>
+                        <div class="seat available">A15</div>
+                        <div class="seat available">A16</div>
+                        <div class="seat available">A17</div> -->
+                    </div>
+                </div>
+            </div>
+        </div> 
+    {% endfor %}
+{% endblock %}
+
+{% block script %}
+{% endblock %}

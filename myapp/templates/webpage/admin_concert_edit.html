@@ -1,0 +1,56 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Home
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/admin_concert_edit.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+{% endblock %}
+
+{% block main_admin %}
+    <div class="container">
+        <h2>Edit Concert</h2>
+        <form method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            
+            <label for="name">Concert Name:</label>
+            <input type="text" name="name" value="{{iconcert.name}}">
+            
+            <label for="datetime">Date and Time:</label>
+            <input type="text" name="datetime" value="{{iconcert.datetime}}" required>
+            
+            <label for="description">Description:</label>
+            <textarea name="description" placeholder="{{iconcert.description}}" required></textarea>
+            
+            <label for="location">Location:</label>
+            <input type="text" name="location" value="{{iconcert.location}}" required>
+
+            <label for="age_restriction">Age Restriction:</label>
+            <input type="text" name="age_restriction" value="{{iconcert.agerestriction}}">
+            
+            <label for="organizer">Organizer:</label>
+            <input type="text" name="organizer" value="{{iconcert.organizer}}" required>
+            
+            <label for="artists">Artists:</label>
+            <input type="text" name="artists" value="{{iconcert.artists}}" required>
+            
+            <label for="image">Concert Image:</label>
+            <input type="file" name="image" class="file-input" accept="image/*">
+            
+            <button type="submit">Update</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block main_notlogin %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/home.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "webpage/navbar.html" %}
+{% load static %} <!-- Load the static tag library -->
+
+{% block title %}
+    TicketTaka - Profile Account
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/profile_account.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbarbase.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="profile-container">
+        <h1 class="profile-title">My Profile</h1>
+
+        <!-- Profile Details -->
+        <div class="profile-card">
+            <!-- <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture"> -->
+            <div class="profile-info">
+                <p>Username: {{ user.username }}</p>
+                <p>Email: {{ user.email }}</p>
+                <p>Last login: {{ user.last_login }}</p>
+            </div>
+        </div>
+
+        <!-- Edit Profile Button -->
+        <div class="edit-section">
+            <button class="edit-btn" onclick="window.location.href='/user/profile_edit/{{user.id}}';">Edit Profile</button>
+        </div>
+        <div class="edit-section">
+            <button class="edit-btn" onclick="window.location.href='/my_tickets/{{user.id}}';">My Tickets</button>
+        </div>
+
+        <!-- <div class="history-section">
+            <button class="history-btn" onclick="window.location.href='/user/history_payment/{{user.id}}';">History</button>
+        </div> -->
+        
+        <!-- Logout Button -->
+        <div class="logout-section">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="logout-btn" type="submit">logout</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
