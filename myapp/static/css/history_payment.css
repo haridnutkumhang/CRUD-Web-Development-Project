@@ -1,0 +1,186 @@
+/* General Body Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #070707;
+    color: #e0e0e0;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4361ee;
+    padding: 1rem 2rem;
+    color: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #f8d210;
+}
+
+/* History Container Styles */
+.history-container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    background: #1c1c1c;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.history-container h1 {
+    text-align: center;
+    color: #f8d210;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #f8d210;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Table Styles */
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+.history-table th,
+.history-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #3e3e3e;
+}
+
+.history-table th {
+    background-color: #343a40;
+    color: #f8d210;
+    font-weight: 600;
+}
+
+.history-table tr:hover {
+    background-color: #2e2e2e;
+}
+
+.history-table td {
+    vertical-align: middle;
+}
+
+.history-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* QR Code Cell Styles */
+.qr-code-cell {
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #f8d210;
+}
+
+.qr-code-cell:hover {
+    color: #fff;
+}
+
+/* Floating QR Code Panel */
+.qr-panel {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.qr-panel-content {
+    background-color: #1c1c1c;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.qr-panel-content h2 {
+    color: #f8d210;
+    margin-bottom: 1.5rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 1.5rem;
+    color: #f8d210;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+/* No Records Row */
+.history-table tr.no-records td {
+    text-align: center;
+    font-style: italic;
+    color: #868e96;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .history-container {
+        padding: 1.5rem;
+    }
+
+    .history-table th,
+    .history-table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar a {
+        margin-left: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .qr-code-cell img {
+        width: 60px; /* Resize QR code for smaller screens */
+        height: 60px;
+    }
+}
+
+/* Fade-In Animation for Panel */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,239 @@
+
+
+/* styles.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #E6F7FF;
+}
+/* Navbar Styling */
+.navbar {
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4361ee; /* Blue background */
+    padding: 10px 20px;
+    color: white;
+    z-index: 1000; /* Ensure it stays on top */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Left Section - Logo and Links */
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-left a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.navbar-left .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Right Section - Cart and Sign In/Profile */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar-right a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.navbar-right .cart-icon {
+    font-size: 20px;
+    position: relative;
+}
+
+/* Add padding to compensate for the fixed navbar */
+body {
+    padding-top: 60px; /* Adjust this based on the navbar height */
+}
+
+
+.recommendations {
+    text-align: center;
+    color: rgb(41, 41, 41);
+    padding: 20px;
+}
+
+.recommendations h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Slider Styles */
+.slider {
+    position: relative;
+    max-width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+    .slider-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%; /* It should handle dynamic content properly */
+}
+
+.slide {
+    flex: 0 0 100%;
+    text-align: center;
+    box-sizing: border-box;
+    color: rgb(41, 41, 41);
+}
+
+.slide img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.slide h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.slide p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.buy-btn {
+    padding: 5px 15px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: #0056b3;
+}
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    background: rgba(9, 145, 236, 0.5);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: rgb(252, 249, 249);
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* for admin */
+/* for admin */
+/* for admin */
+/* for admin */
+/* for admin */
+
+.container {
+    width: 80%;
+    margin: 0 auto;  /* Center the container */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+h3 {
+    text-align: center;
+    color: #050c33;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+.edit-button {
+    padding: 8px 12px;
+    background-color: #ffd900;  /* Blue button */
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+    background-color: #867200;
+}
+
+.delete-button {
+    padding: 8px 12px;
+    background-color: #ff0000;  /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #7e0000;
+}

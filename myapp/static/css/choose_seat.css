@@ -1,0 +1,197 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Left Section: Event Details */
+.event-details {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.event-details h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.event-details .info {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.event-details .info span {
+    color: #00ff00; /* Highlight for time and date */
+}
+
+.event-details .zone {
+    margin-top: 10px;
+}
+
+.event-details .zone span {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.event-details .seat {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.event-details .seat span {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.event-details .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding: 15px;
+    background-color: #fff;
+    color: #000;
+    border-radius: 10px;
+}
+
+.event-details .footer .price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.event-details .footer .buy-btn {
+    background-color: #e63946;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.event-details .footer .buy-btn:hover {
+    background-color: #d62828;
+}
+
+/* Right Section: Seat Map */
+.seat-map {
+    flex: 2;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seat-map .header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.seat-map .legend {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.seat-map .legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.seat-map .legend .box {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+
+.seat-map .legend .seat {
+    background-color: #002c5c; /* Blue for available */
+}
+
+.seat-map .legend .seat {
+    background-color: #002c5c; /* Blue for available */
+}
+
+.seat-map .stage {
+    background-color: #9c89b8;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.seat-map .grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+}
+
+.seat-map .grid .seat {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.seat-map .grid .available {
+    background-color: #007bff; /* Blue for available seats */
+}
+
+.seat-map .grid .selected {
+    background-color: #00ff00; /* Green for selected seats */
+}
+
+.seat-map .grid .reserved {
+    background-color: #ff0000; /* Red for reserved seats */
+    cursor: not-allowed;
+}
+
+.seat-map .grid .unavailable {
+    background-color: #444; /* Gray for unavailable seats */
+    cursor: not-allowed;
+}
